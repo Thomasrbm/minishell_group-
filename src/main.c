@@ -6,7 +6,7 @@
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 20:19:57 by rbardet-          #+#    #+#             */
-/*   Updated: 2025/02/28 20:24:39 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/28 21:51:56 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,3 @@ int	main(int argc, char **argv, char **env)
 // minishell > unset PATH
 // minishell > < Makefile cat
 
-// minishell > << dawdwa
-// $USER
-// dawdwa
