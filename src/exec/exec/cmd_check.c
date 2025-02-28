@@ -6,7 +6,7 @@
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 00:36:29 by throbert          #+#    #+#             */
-/*   Updated: 2025/02/28 18:46:05 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:26:46 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,22 +71,15 @@ int	exec(char **cmd, t_shell *shell)
 	return (exec_cmd(cmd, shell, path));
 }
 
-int	check_single_cmd(t_shell *shell)
+int	check_single_cmd(t_shell *shell, char **cmd)
 {
-	if (shell->cmd && shell->cmd[0] && !shell->cmd[1])
+	if (cmd && cmd[0])
 	{
-		if (access(shell->cmd[0], X_OK) != 0)
+		if (access(cmd[0], X_OK) == 0)
+			return (0);
+		if (check_first(cmd[0], shell->env))
 		{
-			error_message(shell->cmd);
 			shell->exit_code = 127;
-			shell->cmd = free_tab(shell->cmd);
-			return (1);
-		}
-		else if (check_first(shell->cmd[0], shell->env))
-		{
-			error_message(shell->cmd);
-			shell->exit_code = 127;
-			shell->cmd = free_tab(shell->cmd);
 			return (1);
 		}
 	}

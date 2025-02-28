@@ -6,7 +6,7 @@
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 07:40:00 by throbert          #+#    #+#             */
-/*   Updated: 2025/02/28 14:37:35 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/28 19:22:20 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ int								is_ambiguous(t_shell *shell, int i);
 
 /* Error management */
 void							error_message(char **cmd);
-int								check_single_cmd(t_shell *shell);
+int								check_single_cmd(t_shell *shell, char **cmd);
 
 /* More builtins */
 int								is_redirection(t_shell *s);
