@@ -6,7 +6,7 @@
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 05:51:59 by rbardet-          #+#    #+#             */
-/*   Updated: 2025/02/28 19:22:19 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/28 20:33:11 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,26 @@ void	binary_path(char **cmd, t_shell *shell)
 		free_all(shell, NULL);
 		exit(127);
 	}
-	if (ft_strchr(cmd[0], '/'))
+	if (access(cmd[0], X_OK) == 0)
 	{
-		if (access(cmd[0], X_OK) == 0)
+		if (execve(cmd[0], cmd, shell->env) == -1)
 		{
-			if (execve(cmd[0], cmd, shell->env) == -1)
-			{
-				ft_putstr_fd("execve failed\n", 2);
-				free_all(shell, NULL);
-				exit(127);
-			}
+			ft_putstr_fd("execve failed\n", 2);
+			free_all(shell, cmd);
+			exit(127);
 		}
 	}
 }
 
+void	exit_no_path(t_shell *shell, char **cmd, char **cmd_files)
+{
+	ft_putstr_fd(cmd[0], 2);
+	ft_putstr_fd(": command not found\n", 2);
+	free_all(shell, cmd);
+	if (cmd_files)
+		free_tab(cmd_files);
+	exit(127);
+}
 void	exec_path(char **cmd, t_shell *shell)
 {
 	int		i;
@@ -71,7 +77,7 @@ void	exec_path(char **cmd, t_shell *shell)
 	i = 0;
 	cmd_files = split_path(cmd, shell->env);
 	if (!cmd_files || !cmd_files[0])
-		free_all(shell, cmd_files);
+		exit_no_path(shell, cmd, cmd_files);
 	while (cmd_files[i] != NULL)
 	{
 		if (access(cmd_files[i], X_OK) == 0)
@@ -85,7 +91,7 @@ void	exec_path(char **cmd, t_shell *shell)
 		}
 		i++;
 	}
-	ft_putstr_fd(shell->cmd[0], 2);
+	ft_putstr_fd(cmd[0], 2);
 	ft_putstr_fd(": command not found\n", 2);
 	free_tab(cmd);
 	free_all(shell, cmd_files);

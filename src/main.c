@@ -5,14 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 00:56:09 by throbert          #+#    #+#             */
-/*   Updated: 2025/02/28 19:22:24 by rbardet-         ###   ########.fr       */
+/*   Created: 2025/02/28 20:19:57 by rbardet-          #+#    #+#             */
+/*   Updated: 2025/02/28 20:24:39 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-// Dans main.c
 
 t_shell	*is_builtin(t_shell *s)
 {
@@ -88,6 +86,10 @@ int	main(int argc, char **argv, char **env)
 
 // echo $"$USER"$'$USER'
 
+// echo $"$USER"
+// echo $'$USER'
+
+
 // cp /bin/ls .
 // ls
 
@@ -98,10 +100,3 @@ int	main(int argc, char **argv, char **env)
 // minishell > << dawdwa
 // $USER
 // dawdwa
-
-// echo $"$USER"
-// echo $'$USER'
-
-// /|/
-
-// < Makefile > ls ->ok

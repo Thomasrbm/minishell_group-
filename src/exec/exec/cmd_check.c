@@ -6,7 +6,7 @@
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 00:36:29 by throbert          #+#    #+#             */
-/*   Updated: 2025/02/28 19:26:46 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/28 21:51:10 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	exec(char **cmd, t_shell *shell)
 
 	if (!cmd || !cmd[0])
 		return (127);
-	if (ft_strchr(cmd[0], '/'))
-		return (absolute_cmd(cmd, shell));
+	if (access(cmd[0], X_OK) == 0)
+		execve(cmd[0], cmd, shell->env);
 	if (check_first(cmd[0], shell->env) != 0)
 	{
 		error_message(cmd);

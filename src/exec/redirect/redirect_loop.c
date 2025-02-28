@@ -6,7 +6,7 @@
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 16:43:41 by rbardet-          #+#    #+#             */
-/*   Updated: 2025/02/28 19:26:42 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/28 20:03:49 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,6 @@ void	redirect_child(t_shell *shell, int pipefd[2], int *wait_ignore)
 		free_all(shell, NULL);
 		exit(0);
 	}
-	if (check_single_cmd(shell, cmd) == 1)
-		not_valid_cmd(shell, cmd);
 	binary_path(cmd, shell);
 	exec_path(cmd, shell);
 }

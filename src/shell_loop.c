@@ -6,7 +6,7 @@
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 00:50:53 by throbert          #+#    #+#             */
-/*   Updated: 2025/02/28 14:50:12 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/02/28 21:47:12 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ static void	execute_tokens(t_shell *shell, char **toks)
 			shell->exit_code = redirect(shell);
 		else if (is_builtin(shell)->check == 0)
 			shell->exit_code = exec_builtin(shell->cmd, shell);
-		else if (!ft_strchr(shell->cmd[0], '/') && check_first(shell->cmd[0],
-				shell->env) && !ft_tabchr(shell->cmd, '*'))
+		else if (check_single_cmd(shell, shell->cmd) && !ft_tabchr(shell->cmd, '*'))
 		{
 			error_message(shell->cmd);
 			shell->exit_code = 127;
