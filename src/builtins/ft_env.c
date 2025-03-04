@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: throbert <throbert@student.42lehavre.fr    +#+  +:+       +#+        */
+/*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:30:15 by rbardet-          #+#    #+#             */
-/*   Updated: 2025/02/28 02:22:00 by throbert         ###   ########.fr       */
+/*   Updated: 2025/03/04 03:59:49 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,13 @@ int	ft_env(t_shell *shell)
 	int	i;
 
 	i = 0;
+	if (tab_size(shell->cmd) > 1)
+	{
+		ft_putstr_fd("env: ", 2);
+		ft_putstr_fd(shell->cmd[1], 2);
+		ft_putstr_fd("no such file or directory\n", 2);
+		return (127);
+	}
 	if (!shell->env)
 	{
 		ft_putstr_fd("No env available.\n", 2);
