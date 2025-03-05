@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: throbert <throbert@student.42lehavre.fr    +#+  +:+       +#+        */
+/*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 06:31:28 by rbardet-          #+#    #+#             */
-/*   Updated: 2025/02/24 14:35:48 by throbert         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:21:55 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char	*parse_cmd(char *line)
 
 	if (check_line_delim_chain(line))
 		return (ft_strdup(""));
-	res = ft_calloc(5000, sizeof(char *));
+	res = ft_calloc(ft_strlen(line) + 1, sizeof(char *));
 	if (!res)
 		return (NULL);
 	r = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: throbert <throbert@student.42lehavre.fr    +#+  +:+       +#+        */
+/*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 18:57:14 by rbardet-          #+#    #+#             */
-/*   Updated: 2025/02/27 21:51:52 by throbert         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:32:12 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_pwd(t_shell *shell)
 	if (!pwd)
 	{
 		exit_code = 1;
-		ft_putstr_fd("Error in pwd.\n", 2);
+		ft_putstr_fd("Error in pwd.\n", STDERR_FILENO);
 		return (1);
 	}
 	ft_printf("%s\n", pwd);

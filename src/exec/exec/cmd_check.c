@@ -6,7 +6,7 @@
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 00:36:29 by throbert          #+#    #+#             */
-/*   Updated: 2025/02/28 21:51:10 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:24:06 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	check_first(char *argv, char **env)
 	int		i;
 
 	cmd = ft_split(argv, ' ');
-	if (!cmd || !cmd[0])
-		return (1);
+	if (!cmd[0])
+		return (free(cmd), 1);
 	files = split_env_path(cmd, env);
 	i = 0;
 	if (files)

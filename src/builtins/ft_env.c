@@ -6,7 +6,7 @@
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 19:30:15 by rbardet-          #+#    #+#             */
-/*   Updated: 2025/03/04 03:59:49 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:19:39 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	ft_env(t_shell *shell)
 	{
 		ft_putstr_fd("env: ", 2);
 		ft_putstr_fd(shell->cmd[1], 2);
-		ft_putstr_fd("no such file or directory\n", 2);
+		ft_putstr_fd("No such file or directory\n", 2);
 		return (127);
 	}
 	if (!shell->env)

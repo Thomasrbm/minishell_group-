@@ -6,7 +6,7 @@
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 00:34:46 by throbert          #+#    #+#             */
-/*   Updated: 2025/02/28 21:48:19 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/03/04 08:06:49 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ int	fork_and_exec(t_shell *shell)
 	{
 		setup_signals(0);
 		status = exec(shell->cmd, shell);
+		if (status == 127)
+		{
+			free_tab(shell->env);
+			free_tab(shell->cmd);
+			free(shell);
+		}
 		exit(status);
 	}
 	return (wait_ignore(pid));

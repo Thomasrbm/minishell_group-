@@ -6,7 +6,7 @@
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 20:19:57 by rbardet-          #+#    #+#             */
-/*   Updated: 2025/02/28 21:51:56 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:58:33 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	is_redirection(t_shell *s)
 
 	i = 0;
 	if (!s || !s->cmd || !s->cmd[0])
+		return (1);
+	if (ft_strlen(s->cmd[0]) == 1 && tab_size(s->cmd) == 1)
 		return (1);
 	while (s->cmd[i])
 	{
@@ -83,17 +85,3 @@ int	main(int argc, char **argv, char **env)
 	exit_code = shell_loop(shell);
 	return (exit_code);
 }
-
-// echo $"$USER"$'$USER'
-
-// echo $"$USER"
-// echo $'$USER'
-
-
-// cp /bin/ls .
-// ls
-
-
-// minishell > unset PATH
-// minishell > < Makefile cat
-

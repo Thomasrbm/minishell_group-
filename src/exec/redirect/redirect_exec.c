@@ -6,7 +6,7 @@
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 05:51:59 by rbardet-          #+#    #+#             */
-/*   Updated: 2025/02/28 21:55:58 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:44:37 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,22 @@ int	error_open(t_shell *shell, int i, int message)
 {
 	if (message == 1)
 	{
-		ft_putstr_fd("Minishell: ", 2);
-		ft_putstr_fd(shell->cmd[i + 1], 2);
-		ft_putstr_fd(": No such file or directory\n", 2);
+		if (shell->cmd[i + 1])
+		{
+			ft_putstr_fd("Minishell: ", 2);
+			ft_putstr_fd(shell->cmd[i + 1], 2);
+			ft_putstr_fd(": No such file or directory\n", 2);
+		}
 		return (1);
 	}
 	else
 	{
-		ft_putstr_fd("Minishell: ", 2);
-		ft_putstr_fd(shell->cmd[i + 1], 2);
-		ft_putstr_fd(": permission denied\n", 2);
+		if (shell->cmd[i + 1])
+		{
+			ft_putstr_fd("Minishell: ", 2);
+			ft_putstr_fd(shell->cmd[i + 1], 2);
+			ft_putstr_fd(": permission denied\n", 2);
+		}
 		return (1);
 	}
 }
@@ -69,6 +75,7 @@ void	exit_no_path(t_shell *shell, char **cmd, char **cmd_files)
 		free_tab(cmd_files);
 	exit(127);
 }
+
 void	exec_path(char **cmd, t_shell *shell)
 {
 	int		i;

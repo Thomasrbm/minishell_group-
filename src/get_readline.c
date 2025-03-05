@@ -6,7 +6,7 @@
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 09:16:01 by throbert          #+#    #+#             */
-/*   Updated: 2025/02/28 14:49:08 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:56:42 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ char	*get_readline(t_shell *shell)
 		return (NULL);
 	}
 	ret = check_redir_end(trim);
+	if (ret == 2)
+		shell->exit_code = 2;
 	res = proc_redir(shell, in, trim, ret);
 	if (res)
 		return (res);

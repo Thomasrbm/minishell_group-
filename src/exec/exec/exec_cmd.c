@@ -6,7 +6,7 @@
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 00:37:31 by throbert          #+#    #+#             */
-/*   Updated: 2025/02/28 21:49:55 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/03/05 13:06:35 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	try_paths(char **paths_split, char **cmd, t_shell *shell)
 	j = 0;
 	while (paths_split[j])
 	{
+		ft_printf("test2\n");
 		bool = exec_cmd2(cmd, paths_split, shell, j);
 		if (bool != -1)
 			return (bool);

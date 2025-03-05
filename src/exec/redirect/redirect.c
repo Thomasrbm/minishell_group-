@@ -6,7 +6,7 @@
 /*   By: rbardet- <rbardet-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 10:25:44 by rbardet-          #+#    #+#             */
-/*   Updated: 2025/02/28 14:56:59 by rbardet-         ###   ########.fr       */
+/*   Updated: 2025/03/05 10:47:43 by rbardet-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,8 @@ int	redirect(t_shell *shell)
 		return (2);
 	shell->pipe_count = count_pipe(shell->cmd);
 	shell->size = tab_size(shell->cmd);
+	if (ft_strlen(shell->cmd[0]) == 1 && tab_size(shell->cmd) == 1)
+		return (0);
 	pid = fork();
 	if (pid == -1)
 		return (1);
